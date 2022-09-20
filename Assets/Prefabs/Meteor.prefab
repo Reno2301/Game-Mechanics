@@ -98,7 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64b08ab5b20ac945aeb92032ff042f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   rb: {fileID: 5563292435700535807}
+  bigMeteorSpeed: 1
+  mediumMeteorSpeed: 2
+  smallMeteorSpeed: 3
 --- !u!50 &5563292435700535807
 Rigidbody2D:
   serializedVersion: 4
