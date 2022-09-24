@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    [SerializeField] private FieldOfView fieldOfView;
+
     private Camera mainCam;
     private Vector3 mousePos;
     public GameObject bullet;
@@ -44,5 +46,9 @@ public class Shooting : MonoBehaviour
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
+
+        fieldOfView.SetAimDirection(rotation);
+
+        fieldOfView.SetOrigin(transform.position);
     }
 }
