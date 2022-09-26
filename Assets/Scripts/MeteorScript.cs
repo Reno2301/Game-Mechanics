@@ -6,17 +6,27 @@ public class MeteorScript : MonoBehaviour
 {
     public GameObject player;
     public Rigidbody2D rb;
-    public float bigMeteorSpeed;
-    public float mediumMeteorSpeed;
+    public GameObject bullet;
+
     public float smallMeteorSpeed;
-    float scale;
+    public float mediumMeteorSpeed;
+    public float bigMeteorSpeed;
+
+    public int smallMeteorLives;
+    public int mediumMeteorLives;
+    public int bigMeteorLives;
+
+    private int lives;
+
+    private float scale;
 
     // Start is called before the first frame update
     void Start()
     {
-        scale = Random.Range(1f, 4f);
-
         player = GameObject.FindGameObjectWithTag("Player");
+        bullet = GameObject.FindGameObjectWithTag("Bullet");
+
+        scale = (int)Random.Range(1, 4);
         transform.localScale = new Vector3(scale, scale, scale);
         CheckScale();
     }
@@ -33,10 +43,43 @@ public class MeteorScript : MonoBehaviour
         else rb.velocity = new Vector2(rb.velocity.x, meteorSpeed);
     }
 
+    public void CheckMeteorLives(int lives)
+    {
+        this.lives = lives;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
+
+        if (collision.gameObject.tag == "Bullet")
+        {
+            lives--;
+        }
+
+        if (lives <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void CheckScale()
     {
-        if (scale <= 1.5f) CheckMeteorSpeed(smallMeteorSpeed);
-        else if (scale <= 2.8f) CheckMeteorSpeed(mediumMeteorSpeed);
-        else if (scale <= 4f) CheckMeteorSpeed(bigMeteorSpeed);
+        if (scale <= 1f)
+        {
+            CheckMeteorSpeed(smallMeteorSpeed);
+            CheckMeteorLives(smallMeteorLives);
+        }
+        else if (scale <= 2f)
+        {
+            CheckMeteorSpeed(mediumMeteorSpeed);
+            CheckMeteorLives(mediumMeteorLives);
+        }
+
+        else if (scale <= 3f)
+        {
+            CheckMeteorSpeed(bigMeteorSpeed);
+            CheckMeteorLives(bigMeteorLives);
+        }
     }
 }

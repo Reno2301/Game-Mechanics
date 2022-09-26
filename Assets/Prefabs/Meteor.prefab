@@ -99,11 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64b08ab5b20ac945aeb92032ff042f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 2738390349085477287, guid: 81195482b30dd3047864c23796178601, type: 3}
   rb: {fileID: 5563292435700535807}
-  bigMeteorSpeed: 1
-  mediumMeteorSpeed: 2
-  smallMeteorSpeed: 3
+  bullet: {fileID: 7348389770021293192, guid: 3a10e405c2d993d43be79660ba0d9ea8, type: 3}
+  smallMeteorSpeed: 1.5
+  mediumMeteorSpeed: 1
+  bigMeteorSpeed: 0.5
+  smallMeteorLives: 1
+  mediumMeteorLives: 2
+  bigMeteorLives: 3
 --- !u!50 &5563292435700535807
 Rigidbody2D:
   serializedVersion: 4
@@ -135,7 +139,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

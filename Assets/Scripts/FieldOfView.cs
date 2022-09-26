@@ -21,7 +21,7 @@ public class FieldOfView : MonoBehaviour
 
     private void LateUpdate()
     {
-        int rayCount = 50;
+        int rayCount = 100;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
         float viewDistance = 10f;
