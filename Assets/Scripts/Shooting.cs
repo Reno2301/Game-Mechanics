@@ -46,9 +46,9 @@ public class Shooting : MonoBehaviour
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
-
+/*
         fieldOfView.SetAimDirection(rotation);
 
-        fieldOfView.SetOrigin(transform.position);
+        fieldOfView.SetOrigin(transform.position);*/
     }
 }
