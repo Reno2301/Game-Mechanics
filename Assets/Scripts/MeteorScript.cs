@@ -16,6 +16,12 @@ public class MeteorScript : MonoBehaviour
     public int mediumMeteorLives;
     public int bigMeteorLives;
 
+    public float smallMeteorTrailWidth;
+    public float mediumMeteorTrailWidth;
+    public float bigMeteorTrailWidth;
+
+    private TrailRenderer tr;
+
     private int lives;
 
     private float scale;
@@ -25,6 +31,7 @@ public class MeteorScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         bullet = GameObject.FindGameObjectWithTag("Bullet");
+        tr = GetComponent<TrailRenderer>();
 
         scale = (int)Random.Range(1, 4);
         transform.localScale = new Vector3(scale, scale, scale);
@@ -48,6 +55,11 @@ public class MeteorScript : MonoBehaviour
         this.lives = lives;
     }
 
+    public void CheckMeteorTrailWidth(float width)
+    {
+        tr.startWidth = width;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(collision.gameObject);
@@ -69,17 +81,23 @@ public class MeteorScript : MonoBehaviour
         {
             CheckMeteorSpeed(smallMeteorSpeed);
             CheckMeteorLives(smallMeteorLives);
+            CheckMeteorTrailWidth(smallMeteorTrailWidth);
+            tr.time = 1;
         }
         else if (scale <= 2f)
         {
             CheckMeteorSpeed(mediumMeteorSpeed);
             CheckMeteorLives(mediumMeteorLives);
+            CheckMeteorTrailWidth(mediumMeteorTrailWidth);
+            tr.time = 3;
         }
 
         else if (scale <= 3f)
         {
             CheckMeteorSpeed(bigMeteorSpeed);
             CheckMeteorLives(bigMeteorLives);
+            CheckMeteorTrailWidth(bigMeteorTrailWidth);
+            tr.time = 5;
         }
     }
 }
