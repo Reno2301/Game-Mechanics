@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
     public Rigidbody2D rb;
+    public float moveSpeed;
     private Vector2 moveDirection;
 
     public int lives = 3;
@@ -15,11 +15,16 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenHits;
     private float hitTimer;
 
+    public GameObject panel;
+    public MeteorScript meteorScript;
+    public Shooting shooting;
+
     // Update is called once per frame
     void Update()
     {
         Inputs();
         CheckHit();
+        CheckDead();
     }
 
     private void FixedUpdate()
@@ -33,6 +38,15 @@ public class PlayerController : MonoBehaviour
         {
             lives--;
             canGetHit = false;
+        }
+    }
+
+    private void CheckDead()
+    {
+        if(lives <= 0)
+        {
+            panel.gameObject.SetActive(true);
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 

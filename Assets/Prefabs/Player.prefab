@@ -103,10 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38636979c0d8d11478911a366c96fb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
   rb: {fileID: 2738390349085477283}
+  moveSpeed: 4
   lives: 3
   timeBetweenHits: 1
+  panel: {fileID: 0}
+  meteorScript: {fileID: 3718445686274336824, guid: a4968cc085e913048902a02bde8b9597, type: 3}
 --- !u!114 &2392602334637281411
 MonoBehaviour:
   m_ObjectHideFlags: 0
