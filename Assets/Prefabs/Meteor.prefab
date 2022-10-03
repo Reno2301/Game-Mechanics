@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6515927215909444201}
   m_Layer: 7
   m_Name: Meteor
-  m_TagString: Untagged
+  m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,15 +103,16 @@ MonoBehaviour:
   player: {fileID: 2738390349085477287, guid: 81195482b30dd3047864c23796178601, type: 3}
   rb: {fileID: 5563292435700535807}
   bullet: {fileID: 7348389770021293192, guid: 3a10e405c2d993d43be79660ba0d9ea8, type: 3}
-  smallMeteorSpeed: 1.5
-  mediumMeteorSpeed: 1
-  bigMeteorSpeed: 0.5
+  smallMeteorScale: 1
+  mediumMeteorScale: 2
+  bigMeteorScale: 3
+  smallMeteorSpeed: 1.8
+  mediumMeteorSpeed: 1.4
+  bigMeteorSpeed: 1
   smallMeteorLives: 1
   mediumMeteorLives: 2
   bigMeteorLives: 3
-  smallMeteorTrailWidth: 0.3
-  mediumMeteorTrailWidth: 0.7
-  bigMeteorTrailWidth: 1
+  trailWidthFactor: 0.9
 --- !u!50 &5563292435700535807
 Rigidbody2D:
   serializedVersion: 4
@@ -120,7 +121,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4606370018781909940}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -143,7 +144,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -194,7 +195,7 @@ TrailRenderer:
   m_Time: 2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -222,7 +223,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.95629513, g: 1, b: 0, a: 1}
-      key1: {r: 0.7075472, g: 0, b: 0, a: 1}
+      key1: {r: 0.7075472, g: 0, b: 0, a: 0.58431375}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

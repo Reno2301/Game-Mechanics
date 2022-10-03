@@ -2,32 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnMeteors : MonoBehaviour
+public class SpawnGameObjects : MonoBehaviour
 {
     public GameObject player;
     public GameObject meteor;
+    public GameObject planet;
+
     private Vector2 spawnPos;
-    public int meteorCount;
     public int minSpawnRange;
     public int maxSpawnRange;
-    public float spawnTime;
-    private float timer;
+
+    [Header("Meteors")]
+    public int meteorCount;
+    public float meteorSpawnTime;
+    private float meteorTimer;
+
+    [Header("Planets")]
+    public int planetCount;
+    public float planetSpawnTime;
+    private float planetTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        timer = spawnTime;
+        meteorTimer = meteorSpawnTime;
+        planetTimer = planetSpawnTime;
     }
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > spawnTime)
+        meteorTimer += Time.deltaTime;
+        planetTimer += Time.deltaTime;
+
+        if (meteorTimer > meteorSpawnTime)
         {
-            SpawnRandomMeteors();
-            timer = 0;
-        }        
+            SpawnObjects(meteor, meteorCount);
+            meteorTimer = 0;
+        }
+
+        if (planetTimer > planetSpawnTime)
+        {
+            SpawnObjects(planet, planetCount);
+            planetTimer = 0;
+        }
     }
 
     public void SetSpawnPosition()
@@ -37,9 +55,9 @@ public class SpawnMeteors : MonoBehaviour
                 Random.Range(player.transform.position.y - maxSpawnRange, player.transform.position.y + maxSpawnRange));
     }
 
-    public void SpawnRandomMeteors()
+    public void SpawnObjects(GameObject gameObject, int count)
     {
-        for (int i = 0; i < meteorCount; i++)
+        for (int i = 0; i < count; i++)
         {
             SetSpawnPosition();
 
@@ -51,7 +69,7 @@ public class SpawnMeteors : MonoBehaviour
                 distance = Vector2.Distance(spawnPos, player.transform.position);
             }
 
-            Instantiate(meteor, new Vector3(spawnPos.x, spawnPos.y, 0), Quaternion.identity);
+            Instantiate(gameObject, new Vector3(spawnPos.x, spawnPos.y, 0), Quaternion.identity);
         }
     }
 }

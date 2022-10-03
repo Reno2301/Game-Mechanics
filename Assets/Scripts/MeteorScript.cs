@@ -8,17 +8,23 @@ public class MeteorScript : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject bullet;
 
+    [Header("Scale")]
+    public int smallMeteorScale = 1;
+    public int mediumMeteorScale = 2;
+    public int bigMeteorScale = 3;
+
+    [Header("Speed")]
     public float smallMeteorSpeed;
     public float mediumMeteorSpeed;
     public float bigMeteorSpeed;
 
+    [Header("Lives")]
     public int smallMeteorLives;
     public int mediumMeteorLives;
     public int bigMeteorLives;
 
-    public float smallMeteorTrailWidth;
-    public float mediumMeteorTrailWidth;
-    public float bigMeteorTrailWidth;
+    [Header("TrailWidth")]
+    public float trailWidthFactor = 0.9f;
 
     private TrailRenderer tr;
 
@@ -33,9 +39,10 @@ public class MeteorScript : MonoBehaviour
         bullet = GameObject.FindGameObjectWithTag("Bullet");
         tr = GetComponent<TrailRenderer>();
 
-        scale = (int)Random.Range(1, 4);
+        scale = (int)Random.Range(smallMeteorScale, bigMeteorScale + 1);
         transform.localScale = new Vector3(scale, scale, scale);
         CheckScale();
+        CheckMeteorTrailWidth();
     }
 
     public void CheckMeteorSpeed(float meteorSpeed)
@@ -55,18 +62,17 @@ public class MeteorScript : MonoBehaviour
         this.lives = lives;
     }
 
-    public void CheckMeteorTrailWidth(float width)
+    public void CheckMeteorTrailWidth()
     {
-        tr.startWidth = width;
+        tr.startWidth = scale * trailWidthFactor;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-
         if (collision.gameObject.tag == "Bullet")
         {
             lives--;
+            Destroy(collision.gameObject);
         }
 
         if (lives <= 0)
@@ -77,26 +83,23 @@ public class MeteorScript : MonoBehaviour
 
     public void CheckScale()
     {
-        if (scale <= 1f)
+        if (scale <= smallMeteorScale)
         {
             CheckMeteorSpeed(smallMeteorSpeed);
             CheckMeteorLives(smallMeteorLives);
-            CheckMeteorTrailWidth(smallMeteorTrailWidth);
             tr.time = 1;
         }
-        else if (scale <= 2f)
+        else if (scale <= mediumMeteorScale)
         {
             CheckMeteorSpeed(mediumMeteorSpeed);
             CheckMeteorLives(mediumMeteorLives);
-            CheckMeteorTrailWidth(mediumMeteorTrailWidth);
             tr.time = 3;
         }
 
-        else if (scale <= 3f)
+        else if (scale <= bigMeteorScale)
         {
             CheckMeteorSpeed(bigMeteorSpeed);
             CheckMeteorLives(bigMeteorLives);
-            CheckMeteorTrailWidth(bigMeteorTrailWidth);
             tr.time = 5;
         }
     }
