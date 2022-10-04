@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnGameObjects : MonoBehaviour
 {
+    [Header("References")]
     public GameObject player;
     public GameObject meteor;
     public GameObject planet;

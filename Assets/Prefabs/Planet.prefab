@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7667442740104814578}
   - component: {fileID: 8924014819991229274}
   - component: {fileID: 1441474478127481771}
-  - component: {fileID: -5879500632105997724}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -103,6 +102,7 @@ MonoBehaviour:
   player: {fileID: 2738390349085477287, guid: 81195482b30dd3047864c23796178601, type: 3}
   bullet: {fileID: 7348389770021293192, guid: 3a10e405c2d993d43be79660ba0d9ea8, type: 3}
   sr: {fileID: 6442957674496769503}
+  crystal: {fileID: 8067849263230180680, guid: 5c9511c09000a6b4e99712a7199c5251, type: 3}
   planetNr: 0
   planets:
   - {fileID: 21300000, guid: 8ff5851d96e353540b1e6d34f6dafe7b, type: 3}
@@ -142,22 +142,6 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 7
 --- !u!58 &1441474478127481771
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696231737600890851}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3.7
---- !u!58 &-5879500632105997724
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

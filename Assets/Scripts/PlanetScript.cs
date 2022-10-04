@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlanetScript : MonoBehaviour
 {
+    [Header("References")]
     public GameObject player;
     public GameObject bullet;
     public SpriteRenderer sr;
+    public GameObject crystal;
 
+    [Header("Planets")]
     public int planetNr;
     public Sprite[] planets;
 
@@ -42,7 +45,14 @@ public class PlanetScript : MonoBehaviour
 
         if (lives <= 0)
         {
-            Destroy(gameObject);
+            PlanetDies();
         }
+    }
+
+    void PlanetDies()
+    {
+        Instantiate(crystal, this.transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 }

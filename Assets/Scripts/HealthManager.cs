@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
+    [Header("References")]
     public PlayerController pc;
 
+    [Header("List")]
     public Image[] hearts;
 
+    [Header("Sprites")]
     public Sprite fullHeart;
     public Sprite emptyHeart;
 

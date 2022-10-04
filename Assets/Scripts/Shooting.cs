@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//https://www.youtube.com/watch?v=-bkmPm_Besk
+
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private FieldOfView fieldOfView;
 
     private Camera mainCam;
-    private Vector3 mousePos;
     public GameObject bullet;
     public Transform bulletTransform;
+    private Vector3 mousePos;
     private bool canFire;
     private float timer;
     public float timeBetweenFiring;

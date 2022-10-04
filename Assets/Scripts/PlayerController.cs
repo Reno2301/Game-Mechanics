@@ -2,22 +2,28 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("References")]
     public Rigidbody2D rb;
+    public GameObject panel;
+
+    [Header("Movement")]
     public float moveSpeed;
     private Vector2 moveDirection;
 
+    [Header("Health")]
     public int lives = 3;
 
-    private bool canGetHit;
     public float timeBetweenHits;
     private float hitTimer;
+    private bool canGetHit;
 
-    public GameObject panel;
-    public MeteorScript meteorScript;
-    public Shooting shooting;
+    [Header("Score")]
+    public Text scoreText;
+    public int score;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +31,7 @@ public class PlayerController : MonoBehaviour
         Inputs();
         CheckHit();
         CheckDead();
+        scoreText.text = score.ToString();
     }
 
     private void FixedUpdate()

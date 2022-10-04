@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//https://www.youtube.com/watch?v=-bkmPm_Besk
+
 public class BulletScript : MonoBehaviour
 {
     public GameObject player;
-    private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
+    private Vector3 mousePos;
     public float force;
 
     // Start is called before the first frame update
