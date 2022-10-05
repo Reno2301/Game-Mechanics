@@ -7,8 +7,8 @@ public class PlanetScript : MonoBehaviour
     [Header("References")]
     public GameObject player;
     public GameObject bullet;
-    public SpriteRenderer sr;
     public GameObject crystal;
+    private SpriteRenderer sr;
 
     [Header("Planets")]
     public int planetNr;
@@ -16,12 +16,17 @@ public class PlanetScript : MonoBehaviour
 
     public int lives = 5;
 
+    private Vector3 randomOffset;
+    private int crystalCount;
+
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         planetNr = (int)Random.Range(0, 14);
         SetSprite();
+
+        crystalCount = (int)Random.Range(1, 5);
     }
 
 
@@ -36,11 +41,10 @@ public class PlanetScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-
         if (collision.gameObject.tag == "Bullet")
         {
             lives--;
+            Destroy(collision.gameObject);
         }
 
         if (lives <= 0)
@@ -51,7 +55,11 @@ public class PlanetScript : MonoBehaviour
 
     void PlanetDies()
     {
-        Instantiate(crystal, this.transform.position, Quaternion.identity);
+        for (int i = 0; i < crystalCount; i++)
+        {
+            randomOffset = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);
+            Instantiate(crystal, this.transform.position + randomOffset, Quaternion.identity);
+        }
 
         Destroy(gameObject);
     }
