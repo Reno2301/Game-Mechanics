@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Inputs();
+/*        Inputs();*/
         CheckHit();
         CheckDead();
         scoreText.text = score.ToString();
@@ -130,22 +130,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Inputs()
+/*    void Inputs()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-    }
+    }*/
 
     private void Movement()
     {
         // First movement (immediate response to buttons)
-        //rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+/*        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);*/
 
 
         // Second movement (steering through space)
-
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);

@@ -9,6 +9,7 @@ public class PlanetScript : MonoBehaviour
     public GameObject bullet;
     public GameObject crystal;
     private SpriteRenderer sr;
+    [SerializeField] private SimpleFlash flashEffect;
 
     [Header("Planets")]
     public int planetNr;
@@ -44,6 +45,7 @@ public class PlanetScript : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             lives--;
+            flashEffect.Flash();
             Destroy(collision.gameObject);
         }
 

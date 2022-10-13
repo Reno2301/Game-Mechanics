@@ -7,6 +7,7 @@ public class MeteorScript : MonoBehaviour
     public GameObject player;
     public Rigidbody2D rb;
     public GameObject bullet;
+    [SerializeField] private SimpleFlash flashEffect;
 
     [Header("Scale")]
     public int smallMeteorScale = 1;
@@ -72,6 +73,7 @@ public class MeteorScript : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             lives--;
+            flashEffect.Flash();
             Destroy(collision.gameObject);
         }
 
