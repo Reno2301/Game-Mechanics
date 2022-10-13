@@ -106,9 +106,9 @@ MonoBehaviour:
   smallMeteorScale: 1
   mediumMeteorScale: 2
   bigMeteorScale: 3
-  smallMeteorSpeed: 1.8
-  mediumMeteorSpeed: 1.4
-  bigMeteorSpeed: 1
+  smallMeteorSpeed: 3
+  mediumMeteorSpeed: 2.5
+  bigMeteorSpeed: 2
   smallMeteorLives: 1
   mediumMeteorLives: 2
   bigMeteorLives: 3

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     private Vector2 moveDirection;
+    public float movementDrag;
 
     [Header("Health")]
     public int lives = 3;
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        Movement();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -85,30 +86,35 @@ public class PlayerController : MonoBehaviour
             panel.gameObject.SetActive(true);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-            int crystal0Points = cs.crystalPoint0 * countCrystal0;
-            int crystal1Points = cs.crystalPoint1 * countCrystal1;
-            int crystal2Points = cs.crystalPoint2 * countCrystal2;
-            int crystal3Points = cs.crystalPoint3 * countCrystal3;
-            int crystal4Points = cs.crystalPoint4 * countCrystal4;
-            int crystal5Points = cs.crystalPoint5 * countCrystal5;
-
-            crystalScore0.text = countCrystal0.ToString() + "x - Points: ";
-            crystalScore1.text = countCrystal1.ToString() + "x - Points: ";
-            crystalScore2.text = countCrystal2.ToString() + "x - Points: ";
-            crystalScore3.text = countCrystal3.ToString() + "x - Points: ";
-            crystalScore4.text = countCrystal4.ToString() + "x - Points: ";
-            crystalScore5.text = countCrystal5.ToString() + "x - Points: ";
-
-            crystalAmount0.text = crystal0Points.ToString();
-            crystalAmount1.text = crystal1Points.ToString();
-            crystalAmount2.text = crystal2Points.ToString();
-            crystalAmount3.text = crystal3Points.ToString();
-            crystalAmount4.text = crystal4Points.ToString();
-            crystalAmount5.text = crystal5Points.ToString();
-
-            int totalPoints = crystal0Points + crystal1Points + crystal2Points + crystal3Points + crystal4Points + crystal5Points;
-            this.totalPoints.text = totalPoints.ToString();
+            CheckPoints();
         }
+    }
+
+    private void CheckPoints()
+    {
+        int crystal0Points = cs.crystalPoint0 * countCrystal0;
+        int crystal1Points = cs.crystalPoint1 * countCrystal1;
+        int crystal2Points = cs.crystalPoint2 * countCrystal2;
+        int crystal3Points = cs.crystalPoint3 * countCrystal3;
+        int crystal4Points = cs.crystalPoint4 * countCrystal4;
+        int crystal5Points = cs.crystalPoint5 * countCrystal5;
+
+        crystalScore0.text = countCrystal0.ToString() + "x - Points: ";
+        crystalScore1.text = countCrystal1.ToString() + "x - Points: ";
+        crystalScore2.text = countCrystal2.ToString() + "x - Points: ";
+        crystalScore3.text = countCrystal3.ToString() + "x - Points: ";
+        crystalScore4.text = countCrystal4.ToString() + "x - Points: ";
+        crystalScore5.text = countCrystal5.ToString() + "x - Points: ";
+
+        crystalAmount0.text = crystal0Points.ToString();
+        crystalAmount1.text = crystal1Points.ToString();
+        crystalAmount2.text = crystal2Points.ToString();
+        crystalAmount3.text = crystal3Points.ToString();
+        crystalAmount4.text = crystal4Points.ToString();
+        crystalAmount5.text = crystal5Points.ToString();
+
+        int totalPoints = crystal0Points + crystal1Points + crystal2Points + crystal3Points + crystal4Points + crystal5Points;
+        this.totalPoints.text = totalPoints.ToString();
     }
 
     private void CheckHit()
@@ -132,8 +138,33 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector2(moveX, moveY).normalized;
     }
 
-    private void Move()
+    private void Movement()
     {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        // First movement (immediate response to buttons)
+        //rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+
+
+        // Second movement (steering through space)
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
+        } 
+        else if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
+        }
+
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            rb.AddForce(new Vector2(0, moveSpeed), ForceMode2D.Force);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddForce(new Vector2(0, -moveSpeed), ForceMode2D.Force);
+        }
+
+        rb.velocity *= movementDrag;
     }
 }
