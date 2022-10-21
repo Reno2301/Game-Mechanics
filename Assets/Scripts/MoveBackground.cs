@@ -27,26 +27,28 @@ public class MoveBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float temp = (cam.transform.position.x * (1 - parallaxEffect));
+        float tempX = (cam.transform.position.x * (1 - parallaxEffect));
+        float tempY = (cam.transform.position.y * (1 - parallaxEffect));
+
         float distanceX = (cam.transform.position.x * parallaxEffect);
         float distanceY = (cam.transform.position.y * parallaxEffect);
 
         transform.position = new Vector3(startPosX + distanceX, startPosY + distanceY, transform.position.z);
 
-        if (temp > startPosX + lengthX)
+        if (tempX > startPosX + lengthX)
         {
             startPosX += lengthX;
         } 
-        else if (temp < startPosX - lengthX)
+        else if (tempX < startPosX - lengthX)
         {
             startPosX -= lengthX;
         }       
         
-        if (temp > startPosY + lengthY)
+        if (tempY > startPosY + lengthY)
         {
             startPosY += lengthY;
         } 
-        else if (temp < startPosY - lengthY)
+        else if (tempY < startPosY - lengthY)
         {
             startPosY -= lengthY;
         }

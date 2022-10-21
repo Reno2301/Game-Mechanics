@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4606370018781909942}
   - component: {fileID: 4606370018781909943}
   - component: {fileID: 3718445686274336824}
+  - component: {fileID: -243160936589905338}
   - component: {fileID: 5563292435700535807}
   - component: {fileID: -2722489416543662156}
   - component: {fileID: 6515927215909444201}
-  - component: {fileID: -243160936589905338}
   m_Layer: 7
   m_Name: Meteor
   m_TagString: Meteor
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64b08ab5b20ac945aeb92032ff042f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2738390349085477287, guid: 81195482b30dd3047864c23796178601, type: 3}
+  player: {fileID: 1431009728703876697, guid: 8e194841f1625fd47afed2dcbd73a243, type: 3}
   rb: {fileID: 5563292435700535807}
   bullet: {fileID: 7348389770021293192, guid: 3a10e405c2d993d43be79660ba0d9ea8, type: 3}
   flashEffect: {fileID: -243160936589905338}
@@ -115,6 +115,20 @@ MonoBehaviour:
   mediumMeteorLives: 2
   bigMeteorLives: 3
   trailWidthFactor: 0.8
+--- !u!114 &-243160936589905338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4606370018781909940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ec34b395b8b2846a52078d6015a9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 4ca669ccaeaf09f48b39b1c097bf07e3, type: 2}
+  duration: 0.15
 --- !u!50 &5563292435700535807
 Rigidbody2D:
   serializedVersion: 4
@@ -260,17 +274,3 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &-243160936589905338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4606370018781909940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ec34b395b8b2846a52078d6015a9bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 2100000, guid: 4ca669ccaeaf09f48b39b1c097bf07e3, type: 2}
-  duration: 0.15

@@ -33,6 +33,9 @@ public class MeteorScript : MonoBehaviour
 
     private float scale;
 
+    private int maxDistance = 50;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,14 @@ public class MeteorScript : MonoBehaviour
         transform.localScale = new Vector3(scale, scale, scale);
         CheckScale();
         CheckMeteorTrailWidth();
+    }
+
+    private void Update()
+    {
+        if (Vector2.Distance(player.transform.position, transform.position) > maxDistance)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void CheckMeteorSpeed(float meteorSpeed)

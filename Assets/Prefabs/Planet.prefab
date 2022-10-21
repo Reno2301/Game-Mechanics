@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11e52d82fc2ce34c9c781555122f3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2738390349085477287, guid: 81195482b30dd3047864c23796178601, type: 3}
+  player: {fileID: 1431009728703876697, guid: 8e194841f1625fd47afed2dcbd73a243, type: 3}
   bullet: {fileID: 7348389770021293192, guid: 3a10e405c2d993d43be79660ba0d9ea8, type: 3}
   crystal: {fileID: 8067849263230180680, guid: 5c9511c09000a6b4e99712a7199c5251, type: 3}
   flashEffect: {fileID: -9099203662190644531}
