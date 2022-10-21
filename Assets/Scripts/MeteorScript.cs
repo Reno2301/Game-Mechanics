@@ -27,7 +27,12 @@ public class MeteorScript : MonoBehaviour
     [Header("TrailWidth")]
     public float trailWidthFactor = 0.9f;
 
+    [Header("Meteors")]
+    public int meteorNr;
+    public Sprite[] meteors;
+
     private TrailRenderer tr;
+    private SpriteRenderer sr;
 
     private int lives;
 
@@ -42,11 +47,24 @@ public class MeteorScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         bullet = GameObject.FindGameObjectWithTag("Bullet");
         tr = GetComponent<TrailRenderer>();
+        sr = GetComponent<SpriteRenderer>();
+
+        meteorNr = (int)Random.Range(0, 2);
 
         scale = (int)Random.Range(smallMeteorScale, bigMeteorScale + 1);
         transform.localScale = new Vector3(scale, scale, scale);
         CheckScale();
         CheckMeteorTrailWidth();
+        SetSprite();
+    }
+
+    public void SetSprite()
+    {
+        string spriteName = sr.sprite.name;
+        spriteName = spriteName.Replace("Meteorite", "");
+        int spriteNr = int.Parse(spriteName);
+
+        sr.sprite = meteors[meteorNr];
     }
 
     private void Update()
