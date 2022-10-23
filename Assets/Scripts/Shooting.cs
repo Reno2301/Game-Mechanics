@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    [SerializeField] private FieldOfView fieldOfView;
+    private PlayerController pc;
 
     private Camera mainCam;
     public GameObject bullet;
@@ -19,6 +19,7 @@ public class Shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
@@ -36,7 +37,7 @@ public class Shooting : MonoBehaviour
         if (!canFire)
         {
             timer += Time.deltaTime;
-            if(timer > timeBetweenFiring)
+            if (timer > timeBetweenFiring)
             {
                 canFire = true;
                 timer = 0;
@@ -45,12 +46,11 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetMouseButton(0) && canFire)
         {
-            canFire = false;
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            if (pc.lives > 0)
+            {
+                canFire = false;
+                Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            }
         }
-/*
-        fieldOfView.SetAimDirection(rotation);
-
-        fieldOfView.SetOrigin(transform.position);*/
     }
 }

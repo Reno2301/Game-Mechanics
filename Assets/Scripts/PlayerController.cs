@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject panel;
     private ScoreHandler sh;
+    private HighScore hs;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         sh = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreHandler>();
+        hs = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<HighScore>();
     }
 
     // Update is called once per frame
@@ -51,12 +53,15 @@ public class PlayerController : MonoBehaviour
 
     private void CheckDead()
     {
-        if (lives <= 0)
+        if (lives == 0)
         {
             panel.gameObject.SetActive(true);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
             sh.CheckPoints();
+            hs.SetHighScore();
+
+            lives = -1;
         }
     }
 
