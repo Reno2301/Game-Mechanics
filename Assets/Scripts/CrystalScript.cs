@@ -6,6 +6,7 @@ public class CrystalScript : MonoBehaviour
 {
     private GameObject player;
     private PlayerController pc;
+    private ScoreHandler sh;
     private SpriteRenderer sr;
     private int points;
 
@@ -22,6 +23,7 @@ public class CrystalScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sh = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreHandler>();
         player = GameObject.FindGameObjectWithTag("Player");
         pc = player.GetComponent<PlayerController>();
         sr = GetComponent<SpriteRenderer>();
@@ -44,32 +46,32 @@ public class CrystalScript : MonoBehaviour
         switch (sr.sprite.name)
         {
             case "crystal0":
-                pc.countCrystal0++;
+                sh.countCrystal0++;
                 points = crystalPoint0;
                 break;
             case "crystal1":
-                pc.countCrystal1++;
+                sh.countCrystal1++;
                 points = crystalPoint1;
                 break;
             case "crystal2":
-                pc.countCrystal2++;
+                sh.countCrystal2++;
                 points = crystalPoint2;
                 break;
             case "crystal3":
-                pc.countCrystal3++;
+                sh.countCrystal3++;
                 points = crystalPoint3;
                 break;
             case "crystal4":
-                pc.countCrystal4++;
+                sh.countCrystal4++;
                 points = crystalPoint4;
                 break;
             case "crystal5":
-                pc.countCrystal5++;
+                sh.countCrystal5++;
                 points = crystalPoint5;
                 break;
         }
 
-        pc.score += points;
+        sh.score += points;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

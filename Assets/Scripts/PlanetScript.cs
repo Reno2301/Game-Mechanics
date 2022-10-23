@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlanetScript : MonoBehaviour
 {
     [Header("References")]
-    public GameObject player;
     public GameObject bullet;
     public GameObject crystal;
     private SpriteRenderer sr;
