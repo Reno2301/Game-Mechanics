@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class ScoreHandler : MonoBehaviour
 {
-    private CrystalScript cs;
+    [Header("References")]
     public GameObject crystal;
+    private CrystalScript cs;
+
+    [Header("Beginning Text")]
+    public Text searchAndDestroy;
+    private float timer;
 
     [Header("Score")]
     public Text scoreText;
     public int score;
+    public Text totalPoints;
 
+    [Header("Crystals")]
     public Text crystalAmount0;
     public Text crystalAmount1;
     public Text crystalAmount2;
@@ -26,8 +33,8 @@ public class ScoreHandler : MonoBehaviour
     public Text crystalScore4;
     public Text crystalScore5;
 
-    public Text totalPoints;
 
+    [Header("CrystalCount")]
     public int countCrystal0;
     public int countCrystal1;
     public int countCrystal2;
@@ -46,6 +53,11 @@ public class ScoreHandler : MonoBehaviour
     {
         CheckPoints();
         scoreText.text = score.ToString();
+        timer += Time.deltaTime;
+        if (timer > 3)
+        {
+            searchAndDestroy.text = "";
+        }
     }
 
     public void CheckPoints()

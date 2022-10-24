@@ -9,9 +9,11 @@ public class SpawnGameObjects : MonoBehaviour
     public GameObject meteor;
     public GameObject planet;
 
-    private Vector2 spawnPos;
+
+    [Header("Spawn Positioning")]
     public int minSpawnRange;
     public int maxSpawnRange;
+    private Vector2 spawnPos;
 
     [Header("Meteors")]
     public int meteorCount;
