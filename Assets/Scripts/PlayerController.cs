@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private SimpleFlash flashEffect;
+
     [Header("References")]
     public Rigidbody2D rb;
     public GameObject panel;
@@ -20,9 +22,15 @@ public class PlayerController : MonoBehaviour
     [Header("Health")]
     public int lives = 3;
 
+    public int bulletDamage;
+    public int meteorDamage;
+    public int blackHoleDamage;
+
     public float timeBetweenHits;
     private float hitTimer;
     private bool canGetHit;
+
+
 
     private void Start()
     {
@@ -44,12 +52,46 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Meteor" && canGetHit)
+        if (canGetHit)
         {
-            lives--;
-            canGetHit = false;
+            if (collision.gameObject.tag == "Meteor")
+            {
+                GetHitByMeteor();
+            }
+
+            if (collision.gameObject.tag == "EnemyBullet")
+            {
+                GetHitByEnemyBullet();
+            }
+
+            if(collision.gameObject.tag == "BlackHole")
+            {
+                GetHitByBlackHole();
+            }
         }
     }
+
+    private void GetHitByMeteor()
+    {
+        flashEffect.Flash();
+        lives -= meteorDamage;
+        canGetHit = false;
+    }
+    
+    private void GetHitByEnemyBullet()
+    {
+        flashEffect.Flash();
+        lives -= bulletDamage;
+        canGetHit = false;
+    }
+    
+    private void GetHitByBlackHole()
+    {
+        flashEffect.Flash();
+        lives -= blackHoleDamage;
+        canGetHit = false;
+    }
+
 
     private void CheckDead()
     {
@@ -64,8 +106,6 @@ public class PlayerController : MonoBehaviour
             lives = -1;
         }
     }
-
-
 
     private void CheckHit()
     {
@@ -86,7 +126,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(new Vector2(-moveSpeed, 0), ForceMode2D.Force);
-        } 
+        }
         else if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(new Vector2(moveSpeed, 0), ForceMode2D.Force);
