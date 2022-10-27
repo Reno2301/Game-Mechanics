@@ -9,6 +9,7 @@ public class SpawnGameObjects : MonoBehaviour
     public GameObject meteor;
     public GameObject planet;
     public GameObject enemy;
+    public GameObject blackHole;
 
     private Vector2 spawnPos;
 
@@ -31,7 +32,14 @@ public class SpawnGameObjects : MonoBehaviour
     public int minSpawnRangeEnemy;
     public int maxSpawnRangeEnemy;
     public float enemySpawnTime;
-    private float enemyTimer;
+    private float enemyTimer;    
+    
+    [Header("Black Hole")]
+    public int bhCount;
+    public int minSpawnRangeBh;
+    public int maxSpawnRangeBh;
+    public float bHSpawnTime;
+    private float bHTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +48,7 @@ public class SpawnGameObjects : MonoBehaviour
         meteorTimer = meteorSpawnTime;
         planetTimer = planetSpawnTime;
         enemyTimer = 0;
+        bHTimer = bHSpawnTime;
     }
 
     private void Update()
@@ -47,6 +56,7 @@ public class SpawnGameObjects : MonoBehaviour
         meteorTimer += Time.deltaTime;
         planetTimer += Time.deltaTime;
         enemyTimer += Time.deltaTime;
+        bHTimer += Time.deltaTime;
 
         if (meteorTimer > meteorSpawnTime)
         {
@@ -64,6 +74,12 @@ public class SpawnGameObjects : MonoBehaviour
         {
             SpawnObjects(enemy, minSpawnRangeEnemy, maxSpawnRangeEnemy, enemyCount);
             enemyTimer = 0;
+        }
+        
+        if (bHTimer > bHSpawnTime)
+        {
+            SpawnObjects(blackHole, minSpawnRangeBh, maxSpawnRangeBh, bhCount);
+            bHTimer = 0;
         }
     }
 
