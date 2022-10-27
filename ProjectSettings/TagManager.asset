@@ -9,6 +9,7 @@ TagManager:
   - Crystal
   - ScoreManager
   - EnemyBullet
+  - SpawnGameObjects
   layers:
   - Default
   - TransparentFX

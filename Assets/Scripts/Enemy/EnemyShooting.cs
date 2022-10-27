@@ -22,18 +22,23 @@ public class EnemyShooting : MonoBehaviour
     {
         playerPos = player.transform.position;
 
+        float distance = Vector2.Distance(transform.position, playerPos);
+
         Vector3 rotation = playerPos - transform.position;
 
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-
+         
         transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        timer += Time.deltaTime;
-        
-        if(timer > 2)
+        if (distance < 10)
         {
-            timer = 0;
-            Shoot();
+            timer += Time.deltaTime;
+
+            if (timer > 2)
+            {
+                timer = 0;
+                Shoot();
+            }
         }
     }
 

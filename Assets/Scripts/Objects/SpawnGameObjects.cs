@@ -39,7 +39,7 @@ public class SpawnGameObjects : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         meteorTimer = meteorSpawnTime;
         planetTimer = planetSpawnTime;
-        enemyTimer = enemySpawnTime;
+        enemyTimer = 0;
     }
 
     private void Update()
@@ -59,7 +59,7 @@ public class SpawnGameObjects : MonoBehaviour
             SpawnObjects(planet, minSpawnRangePlanet, maxSpawnRangePlanet, planetCount);
             planetTimer = 0;
         }
-        
+
         if (enemyTimer > enemySpawnTime)
         {
             SpawnObjects(enemy, minSpawnRangeEnemy, maxSpawnRangeEnemy, enemyCount);

@@ -48,9 +48,14 @@ public class Shooting : MonoBehaviour
         {
             if (pc.lives > 0)
             {
+                Shoot();
                 canFire = false;
-                Instantiate(bullet, bulletTransform.position, Quaternion.identity);
             }
         }
+    }
+
+    void Shoot()
+    {
+        Instantiate(bullet, bulletTransform.position, Quaternion.identity);
     }
 }

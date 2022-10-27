@@ -9,6 +9,8 @@ public class MeteorScript : MonoBehaviour
     public GameObject bullet;
     [SerializeField] private SimpleFlash flashEffect;
 
+    Vector3 playerPos;
+
     [Header("Scale")]
     public int smallMeteorScale = 1;
     public int mediumMeteorScale = 2;
@@ -30,6 +32,7 @@ public class MeteorScript : MonoBehaviour
     [Header("Meteors")]
     public int meteorNr;
     public Sprite[] meteors;
+    public float meteorDeathRadius;
 
     private TrailRenderer tr;
     private SpriteRenderer sr;
@@ -38,16 +41,14 @@ public class MeteorScript : MonoBehaviour
 
     private float scale;
 
-    private int maxDistance = 50;
-
-
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        bullet = GameObject.FindGameObjectWithTag("Bullet");
         tr = GetComponent<TrailRenderer>();
         sr = GetComponent<SpriteRenderer>();
+
+        playerPos = player.transform.position;
 
         meteorNr = (int)Random.Range(0, 2);
 
@@ -56,6 +57,18 @@ public class MeteorScript : MonoBehaviour
         CheckScale();
         CheckMeteorTrailWidth();
         SetSprite();
+    }
+
+    private void Update()
+    {
+        playerPos = player.transform.position;
+
+        float distance = Vector3.Distance(playerPos, transform.position);
+
+        if (distance > meteorDeathRadius)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetSprite()
@@ -67,24 +80,10 @@ public class MeteorScript : MonoBehaviour
         sr.sprite = meteors[meteorNr];
     }
 
-    private void Update()
+    public void MeteorDirection(float meteorSpeed)
     {
-        if (Vector2.Distance(player.transform.position, transform.position) > maxDistance)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public void CheckMeteorSpeed(float meteorSpeed)
-    {
-        Vector3 playerPos = player.transform.position;
-        Vector3 meteorPos = this.transform.position;
-
-        if (meteorPos.x > playerPos.x) rb.velocity = new Vector2(-meteorSpeed, rb.velocity.y);
-        else rb.velocity = new Vector2(meteorSpeed, rb.velocity.y);
-
-        if (meteorPos.y > playerPos.y) rb.velocity = new Vector2(rb.velocity.x, -meteorSpeed);
-        else rb.velocity = new Vector2(rb.velocity.x, meteorSpeed);
+        Vector3 direction = playerPos - transform.position;
+        rb.velocity = new Vector2(direction.x + Random.Range(-5, 5), direction.y + Random.Range(-5, 5)).normalized * meteorSpeed;
     }
 
     public void CheckMeteorLives(int lives)
@@ -116,20 +115,20 @@ public class MeteorScript : MonoBehaviour
     {
         if (scale <= smallMeteorScale)
         {
-            CheckMeteorSpeed(smallMeteorSpeed);
+            MeteorDirection(smallMeteorSpeed);
             CheckMeteorLives(smallMeteorLives);
             tr.time = 1;
         }
         else if (scale <= mediumMeteorScale)
         {
-            CheckMeteorSpeed(mediumMeteorSpeed);
+            MeteorDirection(mediumMeteorSpeed);
             CheckMeteorLives(mediumMeteorLives);
             tr.time = 3;
         }
 
         else if (scale <= bigMeteorScale)
         {
-            CheckMeteorSpeed(bigMeteorSpeed);
+            MeteorDirection(bigMeteorSpeed);
             CheckMeteorLives(bigMeteorLives);
             tr.time = 5;
         }

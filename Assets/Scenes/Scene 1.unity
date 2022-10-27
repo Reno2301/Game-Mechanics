@@ -4223,9 +4223,9 @@ MonoBehaviour:
   meteor: {fileID: 4606370018781909940, guid: a4968cc085e913048902a02bde8b9597, type: 3}
   planet: {fileID: 8696231737600890851, guid: 0b7dbaf049bfdb34394f863d4d5b6ca9, type: 3}
   enemy: {fileID: 4574124522869645958, guid: a6755a0f7a563ff44a4f498d3a1accf2, type: 3}
-  meteorCount: 15
-  minSpawnRangeMeteor: 15
-  maxSpawnRangeMeteor: 30
+  meteorCount: 30
+  minSpawnRangeMeteor: 20
+  maxSpawnRangeMeteor: 70
   meteorSpawnTime: 5
   planetCount: 5
   minSpawnRangePlanet: 15
@@ -4233,7 +4233,7 @@ MonoBehaviour:
   planetSpawnTime: 25
   enemyCount: 1
   minSpawnRangeEnemy: 10
-  maxSpawnRangeEnemy: 20
+  maxSpawnRangeEnemy: 15
   enemySpawnTime: 45
 --- !u!1 &1770563818
 GameObject:

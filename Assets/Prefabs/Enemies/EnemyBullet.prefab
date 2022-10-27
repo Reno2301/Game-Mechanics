@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7440755704294261538}
   - component: {fileID: 7265546899229810353}
   - component: {fileID: 6806154805951723769}
+  - component: {fileID: -4222249636116072931}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -121,3 +122,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1999575348135424483, guid: 4e46987cbec3f994a95099bf19446557, type: 3}
   force: 5
+--- !u!70 &-4222249636116072931
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785313957153124369}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000002, y: 2.0000005}
+  m_Direction: 0
