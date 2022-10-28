@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private float hitTimer;
     private bool canGetHit;
 
+    public float blackHoleMass;
+
 
 
     private void Start()
@@ -63,11 +65,6 @@ public class PlayerController : MonoBehaviour
             {
                 GetHitByEnemyBullet();
             }
-
-            if(collision.gameObject.tag == "BlackHole")
-            {
-                GetHitByBlackHole();
-            }
         }
     }
 
@@ -77,15 +74,15 @@ public class PlayerController : MonoBehaviour
         lives -= meteorDamage;
         canGetHit = false;
     }
-    
+
     private void GetHitByEnemyBullet()
     {
         flashEffect.Flash();
         lives -= bulletDamage;
         canGetHit = false;
     }
-    
-    private void GetHitByBlackHole()
+
+    public void GetHitByBlackHole()
     {
         flashEffect.Flash();
         lives -= blackHoleDamage;

@@ -10,6 +10,7 @@ TagManager:
   - ScoreManager
   - EnemyBullet
   - SpawnGameObjects
+  - BlackHole
   layers:
   - Default
   - TransparentFX

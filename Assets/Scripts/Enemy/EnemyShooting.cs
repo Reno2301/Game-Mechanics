@@ -8,6 +8,7 @@ public class EnemyShooting : MonoBehaviour
     public Transform bulletPos;
     private GameObject player;
     public Vector3 playerPos;
+    public float shootTimer;
 
     private float timer;
 
@@ -34,7 +35,7 @@ public class EnemyShooting : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (timer > 2)
+            if (timer > shootTimer)
             {
                 timer = 0;
                 Shoot();

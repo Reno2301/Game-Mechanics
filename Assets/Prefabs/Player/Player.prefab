@@ -129,7 +129,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: cee6845860a70c84db0f40ffc5254eaf, type: 3}
-  m_Color: {r: 0.5348434, g: 0.64951456, b: 0.9528302, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -159,8 +159,9 @@ MonoBehaviour:
   lives: 3
   bulletDamage: 1
   meteorDamage: 1
-  blackHoleDamage: 5
+  blackHoleDamage: 3
   timeBetweenHits: 1
+  blackHoleMass: 0
 --- !u!114 &2056851494249375943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 4ca669ccaeaf09f48b39b1c097bf07e3, type: 2}
-  duration: 0.1
+  duration: 0.3
 --- !u!1 &1999575348597863123
 GameObject:
   m_ObjectHideFlags: 0
