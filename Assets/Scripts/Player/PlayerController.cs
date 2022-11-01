@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
 
     public int bulletDamage;
     public int meteorDamage;
-    public int blackHoleDamage;
 
     public float timeBetweenHits;
     private float hitTimer;
@@ -85,7 +84,7 @@ public class PlayerController : MonoBehaviour
     public void GetHitByBlackHole()
     {
         flashEffect.Flash();
-        lives -= blackHoleDamage;
+        lives = 0;
         canGetHit = false;
     }
 

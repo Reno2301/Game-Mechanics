@@ -31,6 +31,8 @@ public class SpawnGameObjects : MonoBehaviour
     public int enemyCount;
     public int minSpawnRangeEnemy;
     public int maxSpawnRangeEnemy;
+    public float enemyMinSpawnTime;
+    public float enemyMaxSpawnTime;
     public float enemySpawnTime;
     private float enemyTimer;    
     
@@ -49,6 +51,8 @@ public class SpawnGameObjects : MonoBehaviour
         planetTimer = planetSpawnTime;
         enemyTimer = 0;
         bHTimer = bHSpawnTime;
+
+        enemySpawnTime = Random.Range(enemyMinSpawnTime, enemyMaxSpawnTime);
     }
 
     private void Update()
@@ -73,6 +77,7 @@ public class SpawnGameObjects : MonoBehaviour
         if (enemyTimer > enemySpawnTime)
         {
             SpawnObjects(enemy, minSpawnRangeEnemy, maxSpawnRangeEnemy, enemyCount);
+            enemySpawnTime = Random.Range(enemyMinSpawnTime, enemyMaxSpawnTime);
             enemyTimer = 0;
         }
         

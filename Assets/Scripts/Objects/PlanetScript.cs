@@ -29,7 +29,6 @@ public class PlanetScript : MonoBehaviour
         crystalCount = (int)Random.Range(1, 5);
     }
 
-
     public void SetSprite()
     {
         string spriteName = sr.sprite.name;

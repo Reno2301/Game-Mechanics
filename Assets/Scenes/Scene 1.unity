@@ -4224,18 +4224,20 @@ MonoBehaviour:
   planet: {fileID: 8696231737600890851, guid: 0b7dbaf049bfdb34394f863d4d5b6ca9, type: 3}
   enemy: {fileID: 4574124522869645958, guid: a6755a0f7a563ff44a4f498d3a1accf2, type: 3}
   blackHole: {fileID: 3014613820553361095, guid: c0062a7ef041f0345bd8acdbf7bd9158, type: 3}
-  meteorCount: 10
+  meteorCount: 5
   minSpawnRangeMeteor: 20
   maxSpawnRangeMeteor: 30
-  meteorSpawnTime: 3
-  planetCount: 5
+  meteorSpawnTime: 2
+  planetCount: 3
   minSpawnRangePlanet: 15
-  maxSpawnRangePlanet: 40
-  planetSpawnTime: 25
+  maxSpawnRangePlanet: 35
+  planetSpawnTime: 30
   enemyCount: 1
   minSpawnRangeEnemy: 10
   maxSpawnRangeEnemy: 15
-  enemySpawnTime: 45
+  enemyMinSpawnTime: 40
+  enemyMaxSpawnTime: 60
+  enemySpawnTime: 0
   bhCount: 2
   minSpawnRangeBh: 15
   maxSpawnRangeBh: 20

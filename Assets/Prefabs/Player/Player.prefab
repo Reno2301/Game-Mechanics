@@ -154,12 +154,11 @@ MonoBehaviour:
   flashEffect: {fileID: 6377038050452604367}
   rb: {fileID: 1999575348135424487}
   panel: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 6
   movementDrag: 0.98
   lives: 3
   bulletDamage: 1
   meteorDamage: 1
-  blackHoleDamage: 3
   timeBetweenHits: 1
   blackHoleMass: 0
 --- !u!114 &2056851494249375943
