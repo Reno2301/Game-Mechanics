@@ -4,43 +4,50 @@ using UnityEngine;
 
 public class ShootFast : MonoBehaviour
 {
-    public GameObject player;
-    public Shooting shooting;
-    public float timer;
+    private GameObject player;
+    private Shooting shooting;
+    private CircleCollider2D cc;
+    private SpriteRenderer sr;
     public float duration;
-    public CircleCollider2D cc;
-    public SpriteRenderer sr;
+    public float timer;
+    public bool fireFaster;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         shooting = player.GetComponentInChildren<Shooting>();
-
         cc = GetComponent<CircleCollider2D>();
         sr = GetComponent<SpriteRenderer>();
 
-        shooting.timeBetweenFiring = shooting.originTimeBetweenFiring;
-        shooting.timerPowerUp = 0;
+        timer = 0;
     }
 
+    private void Update()
+    {
+        if (fireFaster)
+        {
+            timer += Time.deltaTime;
+
+            shooting.timeBetweenFiring = shooting.originTimeBetweenFiring * 0.5f;
+
+            if (timer > duration)
+            {
+                shooting.timeBetweenFiring = shooting.originTimeBetweenFiring;
+                fireFaster = false;
+                Destroy(gameObject);
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            fireFaster = true;
+
             cc.enabled = false;
             sr.enabled = false;
-
-            timer += Time.deltaTime;
-
-            shooting.timeBetweenFiring = shooting.originTimeBetweenFiring * 0.5f;
-
-            if (shooting.timerPowerUp > duration)
-            {
-                shooting.timeBetweenFiring = shooting.originTimeBetweenFiring;
-                Destroy(gameObject);
-            }
         }
     }
 }

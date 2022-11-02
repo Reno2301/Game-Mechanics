@@ -47,7 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7348389770021293192, guid: 3a10e405c2d993d43be79660ba0d9ea8, type: 3}
   bulletTransform: {fileID: 1999575348597863122}
-  timeBetweenFiring: 0.4
+  timerPowerUp: 0
+  originTimeBetweenFiring: 0.4
+  timeBetweenFiring: 0
 --- !u!1 &1999575348135424483
 GameObject:
   m_ObjectHideFlags: 0
