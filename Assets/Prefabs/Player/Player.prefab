@@ -47,7 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7348389770021293192, guid: 3a10e405c2d993d43be79660ba0d9ea8, type: 3}
   bulletTransform: {fileID: 1999575348597863122}
-  timerPowerUp: 0
   originTimeBetweenFiring: 0.4
   timeBetweenFiring: 0
 --- !u!1 &1999575348135424483
@@ -156,7 +155,8 @@ MonoBehaviour:
   flashEffect: {fileID: 6377038050452604367}
   rb: {fileID: 1999575348135424487}
   panel: {fileID: 0}
-  moveSpeed: 6
+  startSpeed: 6
+  moveSpeed: 0
   movementDrag: 0.98
   lives: 3
   bulletDamage: 1

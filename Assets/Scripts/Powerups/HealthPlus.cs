@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthPlus : MonoBehaviour
 {
-    public PlayerController pc;
+    private PlayerController pc;
 
     // Update is called once per frame
     void Update()

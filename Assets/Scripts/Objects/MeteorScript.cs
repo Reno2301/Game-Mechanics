@@ -35,11 +35,19 @@ public class MeteorScript : MonoBehaviour
     public float meteorDeathRadius;
 
     [Header("Powerups")]
+    public int dropFactor;
+
+    [Header("HealUp")]
     public GameObject healthUp;
     public int healthUpChance;
 
+    [Header("ShootFast")]
     public GameObject shootFast;
     public int shootFastChance;
+
+    [Header("MoveFast")]
+    public GameObject moveFast;
+    public int moveFastChance;
 
     private TrailRenderer tr;
     private SpriteRenderer sr;
@@ -116,14 +124,18 @@ public class MeteorScript : MonoBehaviour
         {
             Destroy(gameObject);
 
-            int drop = Random.Range(1, 101);
+            int drop = Random.Range(1, (healthUpChance + shootFastChance + moveFastChance)* dropFactor + 1);
             if (healthUpChance > drop)
             {
                 Instantiate(healthUp, transform.position, Quaternion.identity);
-            } 
+            }
             else if (shootFastChance + healthUpChance > drop)
             {
                 Instantiate(shootFast, transform.position, Quaternion.identity);
+            }
+            else if (shootFastChance + healthUpChance + moveFastChance > drop)
+            {
+                Instantiate(moveFast, transform.position, Quaternion.identity);
             }
         }
     }

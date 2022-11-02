@@ -2,37 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootFast : MonoBehaviour
+public class SpeedUp : MonoBehaviour
 {
-    private Shooting shooting;
+    private PlayerController pc;
     private CircleCollider2D cc;
     private SpriteRenderer sr;
     public float duration;
     public float timer;
-    public bool fireFaster;
+    public bool moveFaster;
 
     // Start is called before the first frame update
     void Start()
     {
-        shooting = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Shooting>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         cc = GetComponent<CircleCollider2D>();
         sr = GetComponent<SpriteRenderer>();
 
         timer = 0;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (fireFaster)
+        if (moveFaster)
         {
             timer += Time.deltaTime;
 
-            shooting.timeBetweenFiring = shooting.originTimeBetweenFiring * 0.5f;
+            pc.moveSpeed = pc.startSpeed * 1.5f;
 
             if (timer > duration)
             {
-                shooting.timeBetweenFiring = shooting.originTimeBetweenFiring;
-                fireFaster = false;
+                pc.moveSpeed = pc.startSpeed;
+                moveFaster = false;
                 Destroy(gameObject);
             }
         }
@@ -42,7 +43,7 @@ public class ShootFast : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            fireFaster = true;
+            moveFaster = true;
 
             cc.enabled = false;
             sr.enabled = false;

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private HighScore hs;
 
     [Header("Movement")]
+    public float startSpeed;
     public float moveSpeed;
     private Vector2 moveDirection;
     public float movementDrag;
@@ -31,12 +32,11 @@ public class PlayerController : MonoBehaviour
 
     public float blackHoleMass;
 
-
-
     private void Start()
     {
         sh = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreHandler>();
         hs = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<HighScore>();
+        moveSpeed = startSpeed;
     }
 
     // Update is called once per frame
