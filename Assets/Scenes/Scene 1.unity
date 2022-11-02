@@ -5522,6 +5522,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[2]
       value: 
       objectReference: {fileID: 144089358}
+    - target: {fileID: 2070509153351066092, guid: 4e46987cbec3f994a95099bf19446557, type: 3}
+      propertyPath: m_Name
+      value: Blood Particles
+      objectReference: {fileID: 0}
     - target: {fileID: 3079550841822435540, guid: 4e46987cbec3f994a95099bf19446557, type: 3}
       propertyPath: m_Name
       value: Flash

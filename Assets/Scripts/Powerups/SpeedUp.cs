@@ -43,6 +43,7 @@ public class SpeedUp : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            pc.pickUpParticle.Play();
             moveFaster = true;
 
             cc.enabled = false;

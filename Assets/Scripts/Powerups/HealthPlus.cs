@@ -16,6 +16,8 @@ public class HealthPlus : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            pc.pickUpParticle.Play();
+
             if (pc.lives <= 2)
             {
                 pc.lives++;

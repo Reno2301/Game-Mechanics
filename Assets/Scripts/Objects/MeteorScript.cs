@@ -8,6 +8,7 @@ public class MeteorScript : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject bullet;
     [SerializeField] private SimpleFlash flashEffect;
+    [SerializeField] private ParticleSystem particle;
 
     Vector3 playerPos;
 
@@ -51,10 +52,16 @@ public class MeteorScript : MonoBehaviour
 
     private TrailRenderer tr;
     private SpriteRenderer sr;
+    private CircleCollider2D cc;
 
     private int lives;
 
     private float scale;
+
+    private void Awake()
+    {
+        particle = GetComponentInChildren<ParticleSystem>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +69,7 @@ public class MeteorScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         tr = GetComponent<TrailRenderer>();
         sr = GetComponent<SpriteRenderer>();
+        cc = GetComponent<CircleCollider2D>();
 
         playerPos = player.transform.position;
 
@@ -122,8 +130,6 @@ public class MeteorScript : MonoBehaviour
 
         if (lives <= 0)
         {
-            Destroy(gameObject);
-
             int drop = Random.Range(1, (healthUpChance + shootFastChance + moveFastChance)* dropFactor + 1);
             if (healthUpChance > drop)
             {
@@ -137,7 +143,21 @@ public class MeteorScript : MonoBehaviour
             {
                 Instantiate(moveFast, transform.position, Quaternion.identity);
             }
+
+            StartCoroutine(Break());
         }
+    }
+
+    private IEnumerator Break()
+    {
+        particle.Play();
+
+        sr.enabled = false;
+        tr.enabled = false;
+        cc.enabled = false;
+
+        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+        Destroy(gameObject);
     }
 
     public void CheckScale()

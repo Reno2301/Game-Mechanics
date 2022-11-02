@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private SimpleFlash flashEffect;
+    public ParticleSystem bloodParticle;
+    public ParticleSystem pickUpParticle;
 
     [Header("References")]
     public Rigidbody2D rb;
@@ -29,8 +30,6 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenHits;
     private float hitTimer;
     private bool canGetHit;
-
-    public float blackHoleMass;
 
     private void Start()
     {
@@ -70,6 +69,7 @@ public class PlayerController : MonoBehaviour
     private void GetHitByMeteor()
     {
         flashEffect.Flash();
+        bloodParticle.Play();
         lives -= meteorDamage;
         canGetHit = false;
     }
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     private void GetHitByEnemyBullet()
     {
         flashEffect.Flash();
+        bloodParticle.Play();
         lives -= bulletDamage;
         canGetHit = false;
     }
@@ -87,7 +88,6 @@ public class PlayerController : MonoBehaviour
         lives = 0;
         canGetHit = false;
     }
-
 
     private void CheckDead()
     {

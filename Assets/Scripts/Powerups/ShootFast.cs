@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShootFast : MonoBehaviour
 {
     private Shooting shooting;
+    private PlayerController pc;
     private CircleCollider2D cc;
     private SpriteRenderer sr;
     public float duration;
@@ -14,6 +15,7 @@ public class ShootFast : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         shooting = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Shooting>();
         cc = GetComponent<CircleCollider2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -42,6 +44,7 @@ public class ShootFast : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            pc.pickUpParticle.Play();
             fireFaster = true;
 
             cc.enabled = false;
