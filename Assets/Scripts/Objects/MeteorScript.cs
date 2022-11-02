@@ -34,6 +34,13 @@ public class MeteorScript : MonoBehaviour
     public Sprite[] meteors;
     public float meteorDeathRadius;
 
+    [Header("Powerups")]
+    public GameObject healthUp;
+    public int healthUpChance;
+
+    public GameObject shootFast;
+    public int shootFastChance;
+
     private TrailRenderer tr;
     private SpriteRenderer sr;
 
@@ -108,6 +115,16 @@ public class MeteorScript : MonoBehaviour
         if (lives <= 0)
         {
             Destroy(gameObject);
+
+            int drop = Random.Range(1, 101);
+            if (healthUpChance > drop)
+            {
+                Instantiate(healthUp, transform.position, Quaternion.identity);
+            } 
+            else if (shootFastChance + healthUpChance > drop)
+            {
+                Instantiate(shootFast, transform.position, Quaternion.identity);
+            }
         }
     }
 

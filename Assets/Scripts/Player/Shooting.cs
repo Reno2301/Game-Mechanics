@@ -14,6 +14,8 @@ public class Shooting : MonoBehaviour
     private Vector3 mousePos;
     private bool canFire;
     private float timer;
+    public float timerPowerUp;
+    public float originTimeBetweenFiring;
     public float timeBetweenFiring;
 
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class Shooting : MonoBehaviour
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        originTimeBetweenFiring = timeBetweenFiring;
     }
 
     // Update is called once per frame

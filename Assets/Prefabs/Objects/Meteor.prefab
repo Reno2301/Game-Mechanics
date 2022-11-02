@@ -120,6 +120,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 05a01a9c8522a8a42bfa5b963ef440f5, type: 3}
   - {fileID: 21300000, guid: 3c0ae6c873e651544951c10c27de70a8, type: 3}
   meteorDeathRadius: 80
+  healthUp: {fileID: 3182238331170150527, guid: ad439024c7b0caa4dbdc781a2e09fc72, type: 3}
+  healthUpChance: 5
+  shootFast: {fileID: 4605400703116579963, guid: 66f0be9abf5f43a4fb3f1283cc649636, type: 3}
+  shootFastChance: 10
 --- !u!114 &-243160936589905338
 MonoBehaviour:
   m_ObjectHideFlags: 0
