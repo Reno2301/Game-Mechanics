@@ -9,10 +9,6 @@ public class ScoreHandler : MonoBehaviour
     public GameObject crystal;
     private CrystalScript cs;
 
-    [Header("Beginning Text")]
-    public Text searchAndDestroy;
-    private float timer;
-
     [Header("Score")]
     public Text scoreText;
     public int score;
@@ -46,6 +42,7 @@ public class ScoreHandler : MonoBehaviour
     void Start()
     {
         cs = crystal.GetComponent<CrystalScript>();
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     // Update is called once per frame
@@ -53,11 +50,7 @@ public class ScoreHandler : MonoBehaviour
     {
         CheckPoints();
         scoreText.text = score.ToString();
-        timer += Time.deltaTime;
-        if (timer > 3)
-        {
-            searchAndDestroy.text = "";
-        }
+        PlayerPrefs.SetInt("Score", score);
     }
 
     public void CheckPoints()

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class HighScore : MonoBehaviour
 {
-    private ScoreHandler sh;
     public Text highScoreText;
     public Text scoreText;
     int score;
@@ -14,24 +13,18 @@ public class HighScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sh = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreHandler>();
+        SetHighScore();
     }
 
     // Update is called once per frame
     void Update()
     {
-        score = sh.score;
-        highScore = score;
-        scoreText.text = highScore.ToString();
-
-        if (PlayerPrefs.GetInt("Score") <= highScore)
-        {
-            PlayerPrefs.SetInt("Score", highScore);
-        }
+        score = PlayerPrefs.GetInt("Score");
+        scoreText.text = score.ToString();
     }
 
     public void SetHighScore()
     {
-        highScoreText.text = PlayerPrefs.GetInt("Score").ToString();
+        highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
     }
 }
