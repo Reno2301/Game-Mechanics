@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     public Rigidbody2D rb;
     public GameObject panel;
+    public GameObject pausePanel;
     private ScoreHandler sh;
 
     [Header("Movement")]
@@ -41,11 +42,26 @@ public class PlayerController : MonoBehaviour
     {
         CheckHit();
         CheckDead();
+        CheckPause();
     }
 
     private void FixedUpdate()
     {
         Movement();
+    }
+
+    private void CheckPause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pausePanel.activeInHierarchy == false)
+            {
+                pausePanel.SetActive(true);
+            } else
+            {
+                pausePanel.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
