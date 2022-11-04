@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
+    [Header("References")]
     public GameObject bullet;
     public Transform bulletPos;
     private GameObject player;
     public Vector3 playerPos;
     public float shootTimer;
+
+    [Header("Audio")]
+    public AudioSource source;
+    public AudioClip clip;
 
     private float timer;
 
@@ -45,6 +50,8 @@ public class EnemyShooting : MonoBehaviour
 
     void Shoot()
     {
+        source.PlayOneShot(clip);
+
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
 }

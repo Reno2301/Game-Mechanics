@@ -19,6 +19,10 @@ public class PlanetScript : MonoBehaviour
     private Vector3 randomOffset;
     private int crystalCount;
 
+    [Header("Audio")]
+    public AudioSource source;
+    public AudioClip clip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +62,8 @@ public class PlanetScript : MonoBehaviour
         for (int i = 0; i < crystalCount; i++)
         {
             randomOffset = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);
+            source.PlayOneShot(clip);
+
             Instantiate(crystal, this.transform.position + randomOffset, Quaternion.identity);
         }
 

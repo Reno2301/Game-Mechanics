@@ -8,12 +8,19 @@ public class Shooting : MonoBehaviour
 {
     private PlayerController pc;
 
+    [Header("Audio")]
+    public AudioSource source;
+    public AudioClip clip;
+
+    [Header("References")]
     private Camera mainCam;
     public GameObject bullet;
     public Transform bulletTransform;
     private Vector3 mousePos;
     private bool canFire;
     private float timer;
+
+    [Header("FiringRate")]
     public float originTimeBetweenFiring;
     public float timeBetweenFiring;
 
@@ -59,5 +66,6 @@ public class Shooting : MonoBehaviour
     void Shoot()
     {
         Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+        source.PlayOneShot(clip);
     }
 }

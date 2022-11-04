@@ -12,6 +12,10 @@ public class MeteorScript : MonoBehaviour
 
     Vector3 playerPos;
 
+    [Header("Audio")]
+    public AudioSource source;
+    public AudioClip clip;
+
     [Header("Scale")]
     public int smallMeteorScale = 1;
     public int mediumMeteorScale = 2;
@@ -150,6 +154,8 @@ public class MeteorScript : MonoBehaviour
 
     private IEnumerator Break()
     {
+        source.PlayOneShot(clip);
+
         particle.Play();
 
         sr.enabled = false;
