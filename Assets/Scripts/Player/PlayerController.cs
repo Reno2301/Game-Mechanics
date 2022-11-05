@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
     private float hitTimer;
     private bool canGetHit;
 
+    [Header("Audio")]
+    public AudioSource source;
+    public AudioClip clip;
+
     private void Start()
     {
         sh = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreHandler>();
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void GetHitByMeteor()
     {
+        source.PlayOneShot(clip);
         flashEffect.Flash();
         bloodParticle.Play();
         lives -= meteorDamage;
@@ -90,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void GetHitByEnemyBullet()
     {
+        source.PlayOneShot(clip);
         flashEffect.Flash();
         bloodParticle.Play();
         lives -= bulletDamage;

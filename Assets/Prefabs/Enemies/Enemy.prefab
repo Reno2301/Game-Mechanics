@@ -125,7 +125,7 @@ MonoBehaviour:
   lives: 5
   flashEffect: {fileID: -2151005285371203152}
   source: {fileID: 5640100011444734901}
-  clip: {fileID: 8300000, guid: f9ca2b6e87b45df428096e0209b70a1d, type: 3}
+  clip: {fileID: 8300000, guid: 38eb3ce977e73a54a8b2c638bc63509e, type: 3}
   rp: {fileID: 5600608747354544962}
 --- !u!50 &473472910708189125
 Rigidbody2D:

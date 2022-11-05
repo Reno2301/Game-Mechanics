@@ -8,6 +8,7 @@ public class PlanetScript : MonoBehaviour
     public GameObject bullet;
     public GameObject crystal;
     private SpriteRenderer sr;
+    private CircleCollider2D cc;
     [SerializeField] private SimpleFlash flashEffect;
 
     [Header("Planets")]
@@ -27,6 +28,8 @@ public class PlanetScript : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        cc = GetComponent<CircleCollider2D>();
+
         planetNr = (int)Random.Range(0, 14);
         SetSprite();
 
@@ -51,22 +54,29 @@ public class PlanetScript : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (lives <= 0)
-        {
-            PlanetDies();
-        }
+        StartCoroutine(Dead());
     }
 
-    void PlanetDies()
+    private IEnumerator Dead()
     {
-        for (int i = 0; i < crystalCount; i++)
+        if (lives <= 0)
         {
-            randomOffset = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);
+            for (int i = 0; i < crystalCount; i++)
+            {
+                randomOffset = new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);
+                source.PlayOneShot(clip);
+
+                Instantiate(crystal, this.transform.position + randomOffset, Quaternion.identity);
+            }
+
+            sr.enabled = false;
+            cc.enabled = false;
+
             source.PlayOneShot(clip);
 
-            Instantiate(crystal, this.transform.position + randomOffset, Quaternion.identity);
-        }
+            yield return new WaitForSeconds(1);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

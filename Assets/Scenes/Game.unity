@@ -5685,5 +5685,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flash
       objectReference: {fileID: 0}
+    - target: {fileID: 5802839356291056368, guid: 4e46987cbec3f994a95099bf19446557, type: 3}
+      propertyPath: m_Pitch
+      value: 0.89
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e46987cbec3f994a95099bf19446557, type: 3}

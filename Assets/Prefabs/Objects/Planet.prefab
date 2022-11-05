@@ -123,7 +123,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0a73328190b6a1b4787cc6921bbe0f94, type: 3}
   lives: 5
   source: {fileID: -5357998726310254661}
-  clip: {fileID: 8300000, guid: 38eb3ce977e73a54a8b2c638bc63509e, type: 3}
+  clip: {fileID: 8300000, guid: f9ca2b6e87b45df428096e0209b70a1d, type: 3}
 --- !u!50 &8924014819991229274
 Rigidbody2D:
   serializedVersion: 4
@@ -187,7 +187,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
